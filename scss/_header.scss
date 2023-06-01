@@ -1,0 +1,142 @@
+@import "./variables.scss";
+@for $i from 1 through 4 {
+  .opened .nav__item:nth-child(#{$i}) {
+    transition-delay: 0.2s * $i;
+  }
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+
+  &__container {
+  }
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+  &__logo {
+    width: 104px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    & a {
+      color: $secondary;
+      text-decoration: none;
+      position: absolute;
+      right: -50%;
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 40px;
+    }
+  }
+  &__brand {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(217deg, #686868cc, rgba(255, 0, 0, 0) 70.71%),
+      linear-gradient(127deg, #9ce22bcc, rgba(0, 255, 0, 0) 70.71%),
+      linear-gradient(336deg, #0dff00cc, rgba(0, 0, 255, 0) 70.71%),
+      linear-gradient(55deg, #fffb00cc, rgba(0, 0, 255, 0) 70.71%);
+    background-size: 500% 1000%;
+    animation: round 5s ease infinite;
+    mask-image: url("../static/logo.svg");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 104px 60px;
+    transform: translateX(-15px);
+  }
+  &__nav {
+  }
+}
+.nav {
+  width: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    padding: 80px 16px 16px 16px;
+    background-color: #141414cf;
+    transition: all 0.5s ease-out;
+  }
+  &__item {
+    transform: translateX(-100px);
+    font-size: 20px;
+    transition: transform 0.5s;
+  }
+  &__icon {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 40px;
+    z-index: 4;
+    background: url("../static/menu.svg") no-repeat center;
+    transition: all 0.5s;
+  }
+  &.opened {
+    & .nav__body {
+      left: 0;
+    }
+    & .nav__item {
+      transform: translateX(0px);
+    }
+    & .nav__icon {
+      background: url("../static/cross.svg") no-repeat center;
+    }
+  }
+}
+
+@media (min-width: 767.98px) {
+  .nav {
+    width: auto;
+
+    &__body {
+      flex-direction: row;
+      height: auto;
+      position: static;
+      padding: 0;
+      background-color: transparent;
+      transition: none;
+    }
+    &__item {
+      font-size: 16px;
+      transform: translateX(0);
+    }
+    &__icon {
+      display: none;
+    }
+  }
+}
+
+@keyframes round {
+  0% {
+  }
+  25% {
+    background-position: 0 100%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
