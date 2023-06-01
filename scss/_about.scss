@@ -1,17 +1,3 @@
-@use "sass:string";
-@function kibikShadows($startX, $startY, $step, $size, $color1) {
-  $result: "";
-  @for $i from 0 through $size {
-    $a: $startX + $step * $i;
-    @for $j from 0 through $size - 1 {
-      $b: $startY + $step * $j;
-      $str: $a + " " + $b + " 0 " + $color1 + ", ";
-      $result: string.insert($result, $str, 100000);
-    }
-  }
-  @return string.unquote($result);
-}
-
 .about {
   &__body {
     display: flex;
@@ -20,7 +6,6 @@
   &__button {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
   }
   &__contact-button {
     background-color: rgba($primary, 0.87);
@@ -44,7 +29,6 @@
     text-transform: uppercase;
     font-family: "Zen Dots", cursive;
     margin-bottom: 50px;
-    text-shadow: 0 0 5px $background;
   }
 }
 .content {
@@ -152,17 +136,6 @@
   }
 }
 
-@keyframes ratateAndtranslate {
-  0% {
-    box-shadow: translate(-500px, 100px) rotate(30deg);
-  }
-  50% {
-    transform: translate(0, 0) rotate(390deg);
-  }
-  100% {
-    transform: translate(-500px, 100px) rotate(30deg);
-  }
-}
 @keyframes pulsation {
   0% {
     box-shadow: 0 0 0 0px rgba($primary, 0.67);

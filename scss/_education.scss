@@ -1,0 +1,104 @@
+@use "sass:string";
+@function kibikShadows($startX, $startY, $step, $size, $color1) {
+  $result: "";
+  @for $i from 0 through $size {
+    $a: $startX + $step * $i;
+    @for $j from 0 through $size - 1 {
+      $b: $startY + $step * $j;
+      $str: $a + " " + $b + " 0 " + $color1 + ", ";
+      $result: string.insert($result, $str, 100000);
+    }
+  }
+  @return string.unquote($result);
+}
+
+.education {
+  height: 100vh;
+  position: relative;
+  &__kub {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+
+    border-radius: 50%;
+    background: transparent;
+    z-index: -1;
+    &.one {
+      width: 15px;
+      height: 15px;
+      box-shadow: kibikShadows(10px, 10px, 40px, 10, rgba($primary, 0.87));
+      animation: rotateAndtranslate1 40s linear infinite;
+    }
+    &.two {
+      top: 100%;
+      left: 80%;
+      width: 5px;
+      height: 5px;
+      box-shadow: kibikShadows(10px, 10px, -20px, 10, rgba($grey, 0.87));
+      animation: rotateAndtranslate2 20s linear infinite;
+    }
+  }
+  &__title {
+    padding-top: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Zen Dots", cursive;
+    margin-bottom: 50px;
+  }
+  &__body {
+  }
+  &__container {
+  }
+  &__content {
+  }
+  &__image {
+  }
+  &__programing {
+  }
+  &__university {
+  }
+}
+
+@keyframes rotateAndtranslate1 {
+  0% {
+    top: 0;
+    left: 0;
+    box-shadow: rotate(30deg);
+  }
+  50% {
+    top: 50%;
+    left: 99%;
+    transform: rotate(180deg);
+  }
+  80% {
+    top: 0;
+    left: 0;
+    transform: rotate(-180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes rotateAndtranslate2 {
+  0% {
+    top: 100%;
+    right: 80%;
+    box-shadow: rotate(30deg);
+  }
+  50% {
+    top: 50%;
+    left: 99%;
+    transform: rotate(180deg);
+  }
+  80% {
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+  }
+  100% {
+    top: 100%;
+    left: 80%;
+    transform: rotate(0deg);
+  }
+}
