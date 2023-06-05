@@ -43,9 +43,20 @@ function moreHandler(button) {
   button.innerText = "Hide";
   window.scrollTo({ behavior: "smooth", top: scroll });
 }
+const circles = document.querySelectorAll(".circle");
+let myReq;
+function update(time) {
+  circles.forEach((circle, index) => {
+    const angle = (time * (2 - index / 10)) / 5;
+    circle.setAttribute("transform", `rotate(${angle} 0 0)`);
+  });
 
+  myReq = requestAnimationFrame(update);
+}
+update(1000);
 window.addEventListener("load", function () {
-  console.log("asd");
+  document.body.classList.add("loaded");
+  cancelAnimationFrame(myReq);
   writeningTitleHandler(300);
 });
 window.addEventListener("scroll", function () {

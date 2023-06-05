@@ -376,7 +376,7 @@ h1 {
   font-weight: 600;
   z-index: -1;
   opacity: 0;
-  animation: highlighting 7s ease-out 6s 1 forwards;
+  animation: highlighting 7s ease-out 10s 1 forwards;
 }
 
 @keyframes highlighting {
@@ -824,4 +824,28 @@ h1 {
 }
 .button:hover .button__mask::before {
   transform: translateX(110%);
+}
+
+.loader {
+  background: black;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  transition: all 0.4s ease-in-out;
+}
+.loader__svg {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: block;
+  height: 200px;
+  width: 200px;
+}
+
+.loaded .loader {
+  left: -100%;
 }/*# sourceMappingURL=styles.css.map */
