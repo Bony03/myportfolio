@@ -3,9 +3,11 @@ menuButton.addEventListener("click", function (e) {
   const menu = document.querySelector(".nav");
   if (menu.classList.contains("opened")) {
     menu.classList.remove("opened");
+    window.document.body.style.overflow = "auto";
     return;
   }
   menu.classList.add("opened");
+  window.document.body.style.overflow = "hidden";
 });
 function writeningTitleHandler(delay) {
   letterArray = [];
@@ -25,10 +27,7 @@ function clickScrollHandler(elemId) {
   const item = document.getElementById(elemId);
   window.scrollTo({ behavior: "smooth", top: item.offsetTop });
 }
-function paralaxHandler(elem, multiplier) {
-  elem.style.webkitMaskPositionY = multiplier * window.pageYOffset + "px";
-  elem.style.maskPositionY = multiplier * window.pageYOffset + "px";
-}
+
 const moreButton = document.querySelector("content__more-button");
 
 function moreHandler(button) {
@@ -46,9 +45,34 @@ function moreHandler(button) {
 }
 
 window.addEventListener("load", function () {
+  console.log("asd");
   writeningTitleHandler(300);
 });
 window.addEventListener("scroll", function () {
-  const mainImage = document.querySelector(".master-head__image");
-  paralaxHandler(mainImage, 0.1);
+  console.log(window.scrollY);
+  if (window.scrollY < window.visualViewport.height * 1.3) {
+    const mainImage = document.querySelector(".master-head__image");
+    mainImage.style.webkitMaskPositionY =
+      Math.round(0.15 * window.pageYOffset) + "px";
+    mainImage.style.maskPositionY =
+      Math.round(0.15 * window.pageYOffset) * window.pageYOffset + "px";
+  }
+});
+const langItems = document.querySelectorAll(".languages__item");
+langItems.forEach((item, index) => {
+  console.log(index);
+  item.addEventListener("click", function (e) {
+    e.stopPropagation();
+    if (e.target.classList.contains("languages__item-title")) {
+      const activeTitle = e.target;
+      if (activeTitle.parentElement.classList.contains("selected")) {
+        activeTitle.parentElement.classList.remove("selected");
+        return;
+      }
+      activeTitle.parentElement.classList.add("selected");
+      console.log(activeTitle.parentElement.style.gridRowStart);
+      activeTitle.parentElement.style.gridRowStart = `${index + 1}`;
+      activeTitle.parentElement.style.gridRowEnd = `${index + 3}`;
+    }
+  });
 });

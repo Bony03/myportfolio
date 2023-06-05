@@ -16,6 +16,108 @@
     />
   </head>
   <body>
+    <div class="loader">
+      <style type="text/css">
+        .loader__svg {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          display: block;
+          height: 200px;
+          width: 200px;
+        }
+      </style>
+      <svg class="loader__svg" viewBox="0 0 100 100">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0
+                                                                   0 1 0 0 0
+                                                                   0 0 1 0 0
+                                                                   0 0 0 25 -8"
+              result="goo"
+            />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+        <g filter="url(#goo)" fill="#64f609" stroke="#64f609">
+          <g transform="translate(50, 50)">
+            <g class="circle -a">
+              <g transform="translate(-50, -50)">
+                <circle cx="25" cy="50" r="9" />
+              </g>
+            </g>
+          </g>
+          <g transform="translate(50, 50)">
+            <g class="circle -b">
+              <g transform="translate(-50, -50)">
+                <circle cx="50" cy="25" r="8" />
+              </g>
+            </g>
+          </g>
+          <g transform="translate(50, 50)">
+            <g class="circle -c">
+              <g transform="translate(-50, -50)">
+                <circle cx="75" cy="50" r="7" />
+              </g>
+            </g>
+          </g>
+          <g transform="translate(50, 50)">
+            <g class="circle -d">
+              <g transform="translate(-50, -50)">
+                <circle cx="50" cy="75" r="6" />
+              </g>
+            </g>
+          </g>
+          <g transform="translate(50, 50)">
+            <g class="circle -e">
+              <g transform="translate(-50, -50)">
+                <circle cx="25" cy="50" r="5" />
+              </g>
+            </g>
+          </g>
+          <g transform="translate(50, 50)">
+            <g class="circle -f">
+              <g transform="translate(-50, -50)">
+                <circle cx="50" cy="25" r="4" />
+              </g>
+            </g>
+          </g>
+          <g transform="translate(50, 50)">
+            <g class="circle -g">
+              <g transform="translate(-50, -50)">
+                <circle cx="75" cy="50" r="3" />
+              </g>
+            </g>
+          </g>
+          <g transform="translate(50, 50)">
+            <g class="circle -h">
+              <g transform="translate(-50, -50)">
+                <circle cx="50" cy="75" r="2" />
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <script>
+      const circles = document.querySelectorAll(".circle");
+
+      function update(time) {
+        circles.forEach((circle, index) => {
+          const angle = (time * (2 - index / 10)) / 5;
+          circle.setAttribute("transform", `rotate(${angle} 0 0)`);
+        });
+
+        requestAnimationFrame(update);
+      }
+
+      update(10000);
+    </script>
     <div class="wrapper">
       <header class="header">
         <div class="header__container">
@@ -26,21 +128,40 @@
             </div>
             <div class="header__nav nav">
               <nav class="nav__body">
-                <div class="nav__item" onclick="clickScrollHandler('aboutMe')">
-                  About me
+                <div class="nav__item" onclick="clickScrollHandler('projects')">
+                  Projects
                 </div>
+
                 <div
                   class="nav__item"
                   onclick="clickScrollHandler('education')"
                 >
-                  Education
+                  Skills
                 </div>
-                <div class="nav__item" onclick="clickScrollHandler('projects')">
-                  Projects
+                <div class="nav__item" onclick="clickScrollHandler('aboutMe')">
+                  About me
                 </div>
                 <div class="nav__item">Contacts</div>
               </nav>
-              <span class="nav__icon"></span>
+              <span class="nav__icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  viewBox="0 0 23 12"
+                  fill="none"
+                >
+                  <path
+                    d="M0.872937 1.725H22.1271C22.5825 1.725 23 1.35 23 0.8625C23 0.375 22.6205 0 22.1271 0H0.872937C0.417492 0 0 0.375 0 0.8625C0 1.35 0.417492 1.725 0.872937 1.725Z"
+                  />
+                  <path
+                    d="M22.5256 5H10.9744C10.7269 5 10.5 5.37609 10.5 5.865C10.5 6.35391 10.7063 6.73 10.9744 6.73H22.5256C22.7731 6.73 23 6.35391 23 5.865C23 5.37609 22.7731 5 22.5256 5Z"
+                  />
+                  <path
+                    d="M22.1271 10H0.872937C0.417492 10 0 10.375 0 10.8625C0 11.3125 0.379538 11.725 0.872937 11.725H22.1271C22.5825 11.725 23 11.35 23 10.8625C23 10.375 22.5825 10 22.1271 10Z"
+                  />
+                </svg>
+              </span>
             </div>
           </div>
         </div>
@@ -58,106 +179,93 @@
             </div>
           </div>
         </section>
-        <section class="main__section about" id="aboutMe">
-          <div class="about__container">
-            <div class="about__body">
-              <h1 class="about__title">about me</h1>
-              <div class="about__content content">
-                <div class="content__image">
-                  <img src="./static/me.jpg" alt="Photo of me" />
-                </div>
-                <div class="content__parag">
-                  <h2 class="content__title">Hello, glad to see you here!</h2>
-                  <div class="content__text">
-                    <p>
-                      My name is Bogdan, and in 2021, at 24 years old, I fully
-                      decided to become a web developer, marking the beginning
-                      of a new chapter in my life that led me here. I must say
-                      that thoughts about programming have been pursuing me
-                      since high school. So in my defense, I even try to pursue
-                      a degree in programming at university, but due to high
-                      competition and the inability to afford tuition fees, I
-                      haven't been enrolled. Instead I take place in NAU,
-                      majoring in Telecommunication systems and networks.
-                    </p>
-                    <p>
-                      After moving to Kyiv, I tried to find a job and establish
-                      myself with a stable income, aiming to become independent.
-                      I decide join to a major gambling holding company,
-                      Parimatch. So that's why I got there, where else could I
-                      find a good salary if not in the world of gambling?
-                    </p>
-                    <p>
-                      I spent 4.5 years there. I want to emphasize that when I
-                      commit to something, I do it well. I started there as a
-                      customer support specialist because of the favorable
-                      schedule and decent pay, and within 1.5 years, I had a
-                      mentor, ranking third among my peers. I worked in that
-                      position for 3.5 years and then transitioned to the
-                      Business Department of Parimatch UA, where I worked for
-                      1.1 years until its closure.
-                    </p>
-                    <p>
-                      While working at Parimatch, I constantly sought to find my
-                      true calling. Even before its closure, I had already
-                      planned to change my career path to become a web-developer
-                      and started studying the relevant materials besides of
-                      working hours. Although I wanted to switch professions,
-                      but I still wished to continue working at Parimatch, as it
-                      was one of the prominent product-oriented IT company in
-                      the industry. Therefore, prior to their unexpected
-                      closure, I had already acquired knowledge in HTML, CSS,
-                      SCSS, JS, React, and Redux. And since it was impossible to
-                      enter their company as a Junior simply through an open
-                      vacancy, the opportunity only arose after completing their
-                      Academy, where they trained future employees according to
-                      their specific requirements. So I waiting for the opening
-                      of the front-end course in Parimatch Academy. However,
-                      fate took a different turn, and Parimatch closed abruptly.
-                      More than 2,000 employees lost their jobs, including me.
-                    </p>
-                    <p>
-                      I shared this story to illustrate through my life
-                      experiences that planning ahead may not always yield the
-                      expected results. It's important to take action here and
-                      now, so I'm ready to move forward, albeit on a different
-                      path. If you share my vision of the world and are ready to
-                      strive for greatness together, here and now, then let's
-                      not waste any time. Click the button below and message me!
-                    </p>
-                  </div>
-                  <div class="content__more">
-                    <button
-                      class="content__more-button"
-                      onclick="moreHandler(this)"
-                    >
-                      Show more
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="about__button">
-                <button class="about__contact-button">Contact me</button>
-              </div>
+        <section class="main__section" id="projects">
+          <div class="main__body">
+            <div class="main__container projects">
+              <h1 class="projects__title">Project cases</h1>
+              <ul class="projects__list">
+                <li class="projects__item project">
+                  <a class="project__body">
+                    <div class="project__background">
+                      <img src="./static/Todolist.jpg" />
+                    </div>
+
+                    <div class="project__content">
+                      <h2 class="project__title">Todo list</h2>
+                      <p class="project__text">
+                        Todo List is a React application designed for task notes
+                        and planning.
+                      </p>
+                      <button href="" class="project__button button">
+                        <span class="button__text">View details</span>
+                        <div class="button__mask"></div>
+                      </button>
+                    </div>
+                  </a>
+                </li>
+                <li class="projects__item project">
+                  <a class="project__body">
+                    <div class="project__background">
+                      <img src="./static/image1.jpg" />
+                    </div>
+                    <div class="project__content">
+                      <h2 class="project__title">Todo list</h2>
+                      <p class="project__text">
+                        Todo List is a React application designed for task notes
+                        and planning.
+                      </p>
+                      <button href="" class="project__button button">
+                        <span class="button__text">View details</span>
+                        <div class="button__mask"></div>
+                      </button>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
-        <section class="main__section" id="education">
-          <div class="main__body"></div>
-        </section>
-        <section class="main__section education" id="projects">
+        <section class="main__section education" id="education">
           <span class="education__kub one"></span>
           <span class="education__kub two"></span>
           <div class="education__container">
             <h1 class="education__title">Education</h1>
             <div class="education__body">
-              <div class="education__university">
-                <div class="education__content"></div>
-                <div class="education__image"></div>
-              </div>
-              <div class="education__programing">
-                <div class="education__content"></div>
-                <div class="education__image"></div>
+              <div class="education__content university">
+                <h1 class="university__title">National Aviation University</h1>
+                <div class="university__body">
+                  <div class="university__column">
+                    <h5>Degree</h5>
+                    <p>
+                      Bachelor's degree, Telecommunication systems and networs.
+                    </p>
+                  </div>
+                  <div class="university__column">
+                    <h5>Start</h5>
+                    <p>Sep. 2016</p>
+                  </div>
+                  <div class="university__column">
+                    <h5>End</h5>
+                    <p>Jun. 2020</p>
+                  </div>
+                  <div class="university__column">
+                    <h5>Faculty</h5>
+                    <p>
+                      Faculty of Aeronautics, Economics and Telecommunications,
+                      FAET
+                    </p>
+                  </div>
+                  <div class="university__column comments">
+                    <h5>About</h5>
+                    <p>
+                      Acquired skills in the field of design and operation of
+                      modern information and communication systems, mobile and
+                      satellite radio communication systems, automatic switching
+                      systems, global and local data transmission networks,
+                      computer networks (wired and wireless)
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -167,6 +275,6 @@
         <div class="footer__container">footer</div>
       </footer>
     </div>
-    <script src="./js/script.js" type="text/javascript"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>

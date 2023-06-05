@@ -1,0 +1,41 @@
+.button {
+  position: relative;
+  width: 150px;
+  height: 54px;
+  border: 2px solid $grey;
+  background: $background;
+  overflow: hidden;
+  cursor: pointer;
+  &__text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: $grey;
+    z-index: 2;
+  }
+
+  &__mask {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, #212121 20%, $primary);
+      transform: translateX(-200%);
+      transition: all 0.6s cubic-bezier(0.694, 0.048, 0.335, 1);
+    }
+  }
+  &:hover .button__mask {
+    &::before {
+      transform: translateX(110%);
+    }
+  }
+}
