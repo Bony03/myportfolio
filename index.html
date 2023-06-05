@@ -17,17 +17,6 @@
   </head>
   <body>
     <div class="loader">
-      <style type="text/css">
-        .loader__svg {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translateX(-50%) translateY(-50%);
-          display: block;
-          height: 200px;
-          width: 200px;
-        }
-      </style>
       <svg class="loader__svg" viewBox="0 0 100 100">
         <defs>
           <filter id="goo">
@@ -104,20 +93,6 @@
         </g>
       </svg>
     </div>
-    <script>
-      const circles = document.querySelectorAll(".circle");
-
-      function update(time) {
-        circles.forEach((circle, index) => {
-          const angle = (time * (2 - index / 10)) / 5;
-          circle.setAttribute("transform", `rotate(${angle} 0 0)`);
-        });
-
-        requestAnimationFrame(update);
-      }
-
-      update(10000);
-    </script>
     <div class="wrapper">
       <header class="header">
         <div class="header__container">
