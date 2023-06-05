@@ -13,14 +13,12 @@
 }
 
 .education {
-  height: 100vh;
   position: relative;
   &__kub {
     position: absolute;
     top: 0;
     left: 0;
     display: block;
-
     border-radius: 50%;
     background: transparent;
     z-index: -1;
@@ -46,20 +44,62 @@
     font-family: "Zen Dots", cursive;
     margin-bottom: 50px;
   }
-  &__body {
-  }
   &__container {
   }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__content {
+    width: 100%;
+    max-width: 650px;
+    background: rgba(#000000, 0.5);
+    padding: 20px;
   }
-  &__image {
+}
+.university {
+  font-family: "Zen Dots", cursive;
+  margin-bottom: 50px;
+  &__body {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
   }
-  &__programing {
+  &__column {
+    & h5 {
+      font-size: 18px;
+      margin: 0 0 8px 0;
+    }
+    & p {
+      color: $grey;
+    }
+    margin-bottom: 24px;
   }
-  &__university {
+
+  &__title {
+    color: rgba($primary, 0.87);
+    margin-bottom: 24px;
   }
 }
 
+@media (min-width: 1023.98px) {
+  .education {
+    &__content {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+  .university {
+    &__body {
+      gap: 15px;
+      flex-wrap: nowrap;
+    }
+    &__column {
+      margin-bottom: 0;
+    }
+  }
+}
 @keyframes rotateAndtranslate1 {
   0% {
     top: 0;

@@ -2,10 +2,12 @@
   &__body {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   &__button {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
   }
   &__contact-button {
     background-color: rgba($primary, 0.87);
@@ -24,11 +26,14 @@
     cursor: pointer;
   }
   &__title {
-    padding-top: 100px;
+    padding-top: 50px;
     text-align: center;
     text-transform: uppercase;
     font-family: "Zen Dots", cursive;
     margin-bottom: 50px;
+    transition: all 0.4s ease;
+    transform: translateX(100px);
+    opacity: 0;
   }
 }
 .content {
@@ -39,6 +44,9 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 50px;
+  transform: translateX(-100px);
+  transition: all 0.4s ease 0.3s;
+  opacity: 0;
   &__image {
     max-width: 300px;
     max-height: 300px;
@@ -55,8 +63,7 @@
     width: 100%;
     max-width: 650px;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: inset 0 0 10px 2px $background;
+    border-radius: 8px;
   }
   &__text {
     text-align: justify;
@@ -81,6 +88,7 @@
   &__title {
     margin-bottom: 24px;
     text-align: center;
+    font-family: "Zen Dots", cursive;
     color: rgba($primary, 0.87);
   }
   &__more {
@@ -102,7 +110,22 @@
     display: block;
   }
 }
+.inViewport {
+  .about__title {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .content {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 @media (min-width: 767.98px) {
+  .about {
+    &__title {
+      padding-top: 100px;
+    }
+  }
   .content {
     flex-direction: column;
     &__text {

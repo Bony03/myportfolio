@@ -19,7 +19,7 @@
       linear-gradient(336deg, #0dff00cc, rgba(0, 0, 255, 0) 70.71%),
       linear-gradient(55deg, #686868cc, rgba(0, 0, 255, 0) 70.71%);
     background-size: 500% 1000%;
-    animation: round 10s ease 1s infinite;
+    animation: round 10s cubic-bezier(0.694, 0.048, 0.335, 1) 1s infinite;
     mask-image: url("../static/big_logo.svg");
     mask-repeat: no-repeat;
     mask-position: 0 0;
