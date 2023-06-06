@@ -1,9 +1,10 @@
+@import "_adaptFontSize";
 body {
   background-color: $background;
   font-size: 16px;
   font-weight: 400;
   line-height: 26px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: $secondary;
 }
 .wrapper {
@@ -21,7 +22,7 @@ body {
   padding: 0 16px;
 }
 h1 {
-  font-size: 40px;
+  @include adaptiv-font(40, 32, 1290);
   line-height: 40px;
 }
 
