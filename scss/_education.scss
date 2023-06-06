@@ -1,28 +1,4 @@
 .education {
-  position: relative;
-  &__kub {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    border-radius: 50%;
-    background: transparent;
-    z-index: -1;
-    &.one {
-      width: 15px;
-      height: 15px;
-      box-shadow: kibikShadows(10px, 10px, 40px, 10, rgba($primary, 0.87));
-      animation: rotateAndtranslate1 40s linear infinite;
-    }
-    &.two {
-      top: 100%;
-      left: 80%;
-      width: 5px;
-      height: 5px;
-      box-shadow: kibikShadows(10px, 10px, -20px, 10, rgba($grey, 0.87));
-      animation: rotateAndtranslate2 20s linear infinite;
-    }
-  }
   &__title {
     padding-top: 50px;
     text-align: center;
