@@ -1,0 +1,14 @@
+@mixin adaptiv-font($pcSize, $mobSize, $maxWidth) {
+  $additionSize: $pcSize - $mobSize;
+  $addMobSize: $pcSize - $additionSize * 0.7;
+  @media (max-width: 767.98px) {
+    font-size: calc(
+      #{$mobSize + px} + #{$addMobSize} * (100vw - 320px) / #{$maxWidth}
+    );
+  }
+  @media (min-width: 767.98px) {
+    font-size: calc(
+      #{$mobSize + px} + #{$additionSize} * (100vw / #{$maxWidth})
+    );
+  }
+}
