@@ -52,6 +52,20 @@
   &:nth-child(2n + 1) {
     justify-content: flex-end;
   }
+  &__background {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 58% 0;
+    & img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      position: absolute;
+    }
+  }
   &__content {
     position: absolute;
     top: 50%;
